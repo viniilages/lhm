@@ -80,7 +80,7 @@ const Index = () => {
             {[{
             image: zurich,
             name: "Residencial Zurich",
-            location: "Savassi, Belo Horizonte",
+            location: "Ouro Branco, Belo Horizonte",
             status: "Em Construção",
             description: "Apartamentos de 3 e 4 suítes com vista panorâmica"
           }, {
