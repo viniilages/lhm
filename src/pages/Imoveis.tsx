@@ -210,12 +210,12 @@ const Imoveis = () => {
                       {imovel.description}
                     </p>
                     <Button
-                    variant="outline"
-                    className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full"
-                    onClick={() => handleVerDetalhes(imovel)}
-                  >
-                    Saiba mais
-                  </Button>
+                      variant="outline"
+                      className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground w-full"
+                      onClick={() => handleVerDetalhes(imovel)}
+                    >
+                      Saiba mais
+                    </Button>
                   </div>
                 </div>
               </Card>

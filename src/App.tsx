@@ -8,6 +8,7 @@ import Imoveis from "./pages/Imoveis.js";
 import ImovelDetalhe from "./pages/ImovelDetalhe.js";
 import NotFound from "./pages/NotFound.js";
 import MainLayout from "./components/layout/MainLayout.js";
+import ScrollToHashElement from "./components/layout/ScrollToHashElement.js";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <BrowserRouter>
+        <ScrollToHashElement />
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<Index />} />

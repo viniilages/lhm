@@ -25,11 +25,12 @@ const MainHeader = () => {
           >
             Imóveis
           </NavLink>
-          
-          <a href="/#sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+          <Link
+            to="/#sobre"
+            className="text-sm text-muted-foreground hover:text-primary transition-colors"
+          >
             Sobre
-          </a>
-
+          </Link>
           <Link
             to="/#diferenciais"
             className="text-sm text-muted-foreground hover:text-primary transition-colors"
