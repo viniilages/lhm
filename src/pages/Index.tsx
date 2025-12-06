@@ -1,5 +1,8 @@
 import { Button } from "../components/ui/button.js";
 import { Card } from "../components/ui/card.js";
+import { useNavigate } from "react-router-dom";
+import { imoveis } from "../data/imoveis.js";
+import AgendarVisitaButton from "../components/AgendarVisitaButton.js";
 import { Building2, Award, Users, TrendingUp, Mail, Phone, MapPin } from "lucide-react";
 import heroImage from "../assets/hero-building.jpg";
 import project2 from "../assets/project-2.jpg";
@@ -7,32 +10,20 @@ import project3 from "../assets/project-3.jpg";
 import logoLhm from "../assets/logo-lhm.png";
 import zurich from "../assets/zurich.png";
 const Index = () => {
-  return <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-lg">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center">
-            <img src={logoLhm} alt="LHM Incorporadora" className="h-12 w-auto" />
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#empreendimentos" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Empreendimentos
-            </a>
-            <a href="#sobre" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Sobre
-            </a>
-            <a href="#diferenciais" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Diferenciais
-            </a>
-            <a href="#contato">
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Contato
-              </Button>
-            </a>
-          </nav>
-        </div>
-      </header>
+  const navigate = useNavigate();
 
+  const handleConhecerOportunidades = () => {
+    navigate("/imoveis");
+  };
+
+  const handleFaleConosco = () => {
+    const contatoSection = document.getElementById("contato");
+    if (contatoSection) {
+      contatoSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -53,10 +44,14 @@ const Index = () => {
           </p>
         
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent shadow-gold text-lg px-8">
+            <Button
+              size="lg"
+              className="bg-primary text-primary-foreground hover:bg-accent shadow-gold text-lg px-8"
+              onClick={handleConhecerOportunidades}
+            >
               Conhecer oportunidades
             </Button>
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8">
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-lg px-8" onClick={handleFaleConosco}>
               Fale Conosco
             </Button>
           </div>
@@ -77,25 +72,7 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[{
-            image: zurich,
-            name: "Residencial Zurich",
-            location: "Ouro Branco, Minas Gerais",
-            status: "Em Construção",
-            description: "Apartamentos de 3 e 4 suítes com vista panorâmica"
-          }, {
-            image: project2,
-            name: "Edifício Essence",
-            location: "Jardins, São Paulo",
-            status: "Lançamento",
-            description: "Unidades de alto padrão com acabamento premium"
-          }, {
-            image: project3,
-            name: "Residencial Splendor",
-            location: "Itaim Bibi, São Paulo",
-            status: "Previsto",
-            description: "Complexo residencial com área de lazer completa"
-          }].map((project, index) => <Card key={index} className="group overflow-hidden bg-card border-border hover:border-primary transition-all duration-500 hover:shadow-gold animate-fade-in" style={{
+            {imoveis.slice(0, 3).map((project, index) => <Card key={index} className="group overflow-hidden bg-card border-border hover:border-primary transition-all duration-500 hover:shadow-gold animate-fade-in" style={{
             animationDelay: `${index * 0.2}s`
           }}>
                 <div className="relative overflow-hidden h-64">
@@ -117,7 +94,11 @@ const Index = () => {
                   <p className="text-muted-foreground mb-6">
                     {project.description}
                   </p>
-                  <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  <Button
+                    variant="outline"
+                    className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                    onClick={() => navigate(`/imoveis/${project.id}`)}
+                  >
                     Saiba Mais
                   </Button>
                 </div>
@@ -252,9 +233,7 @@ const Index = () => {
                 </div>)}
             </div>
 
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-accent shadow-gold text-lg px-12">
-              Agende uma Visita
-            </Button>
+            <AgendarVisitaButton className="bg-primary text-primary-foreground hover:bg-accent shadow-gold text-lg px-12" />
           </div>
         </div>
       </section>
