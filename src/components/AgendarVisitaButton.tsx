@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button.js";
 import { Input } from "./ui/input.js";
 import { Textarea } from "./ui/textarea.js";
@@ -18,8 +18,8 @@ interface AgendarVisitaButtonProps {
 
 // TROQUE esses valores pelos seus do EmailJS:
 const EMAILJS_SERVICE_ID = "service_jftxaf6";        // <- seu Service ID
-const EMAILJS_TEMPLATE_ID = "template_wbb33x9";  // <- Template ID
-const EMAILJS_PUBLIC_KEY = "IYKTyDQ6vpgp-lDel";    // <- Public key
+const EMAILJS_TEMPLATE_ID = "template_wbb33x9";      // <- Template ID
+const EMAILJS_PUBLIC_KEY = "IYKTyDQ6vpgp-lDel";      // <- Public key
 
 const AgendarVisitaButton = ({ imovelNome }: AgendarVisitaButtonProps) => {
   const { toast } = useToast();
@@ -80,7 +80,6 @@ const AgendarVisitaButton = ({ imovelNome }: AgendarVisitaButtonProps) => {
       setIsSubmitting(false);
     }
   };
-
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
