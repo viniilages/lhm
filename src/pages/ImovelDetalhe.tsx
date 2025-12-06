@@ -150,7 +150,7 @@ const ImovelDetalhe = () => {
               {imovel.bathrooms && (
                 <Card className="p-4 bg-card/80 border-border">
                   <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1">
-                    Banheiros
+                    Vagas de Garagem
                   </p>
                   <p className="text-xl font-semibold text-foreground">
                     {imovel.bathrooms}
