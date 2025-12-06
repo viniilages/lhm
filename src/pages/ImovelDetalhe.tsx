@@ -90,9 +90,9 @@ const ImovelDetalhe = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                {/* Setas só no desktop, no mobile fica no swipe */}
-                <CarouselPrevious className="hidden md:flex" />
-                <CarouselNext className="hidden md:flex" />
+                {/* Setas sempre visíveis (mobile e desktop) */}
+                <CarouselPrevious className="flex h-9 w-9 items-center justify-center rounded-full bg-background/80 border border-border shadow-lg" />
+                <CarouselNext className="flex h-9 w-9 items-center justify-center rounded-full bg-background/80 border border-border shadow-lg" />
               </Carousel>
             ) : (
               <img
@@ -163,18 +163,6 @@ const ImovelDetalhe = () => {
                 </Card>
               )}
             </div>
-
-            <Card className="p-6 bg-card/80 border-border">
-              <h2 className="text-xl font-semibold mb-2 text-foreground">
-                Diferenciais do empreendimento
-              </h2>
-              <ul className="space-y-1 text-muted-foreground text-sm">
-                <li>• Plantas amplas e inteligentes</li>
-                <li>• Localização privilegiada em Ouro Branco</li>
-                <li>• Acabamentos de alto padrão</li>
-                <li>• Áreas comuns completas para toda a família</li>
-              </ul>
-            </Card>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <AgendarVisitaButton imovelNome={imovel.name} />
