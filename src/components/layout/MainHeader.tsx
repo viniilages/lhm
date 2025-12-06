@@ -113,7 +113,7 @@ const MainHeader = () => {
             </Link>
 
             <Link to="/#contato" className="block" onClick={closeMenu}>
-              <Button className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button className="w-full border-primary bg-primary text-primary-foreground hover:bg-primary/90">
                 Contato
               </Button>
             </Link>
