@@ -90,9 +90,14 @@ const ImovelDetalhe = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                {/* Setas sempre visíveis (mobile e desktop) */}
-                <CarouselPrevious className="flex h-9 w-9 items-center justify-center rounded-full bg-background/80 border border-border shadow-lg" />
-                <CarouselNext className="flex h-9 w-9 items-center justify-center rounded-full bg-background/80 border border-border shadow-lg" />
+
+                {/* Setas visíveis dentro do card (mobile e desktop) */}
+                <CarouselPrevious
+                  className="left-4 top-1/2 -translate-y-1/2 bg-background/80 border border-border shadow-lg"
+                />
+                <CarouselNext
+                  className="right-4 top-1/2 -translate-y-1/2 bg-background/80 border border-border shadow-lg"
+                />
               </Carousel>
             ) : (
               <img
