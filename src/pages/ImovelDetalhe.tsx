@@ -7,6 +7,18 @@ import type { Imovel } from "../data/imoveis.js";
 import { MapPin, ArrowLeft } from "lucide-react";
 import AgendarVisitaButton from "../components/AgendarVisitaButton.js";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../components/ui/carousel.js";
+import zurich1 from "../assets/zurich.png";
+import zurich2 from "../assets/zurich2.png";
+import zurich3 from "../assets/zurich3.png";
+import zurich4 from "../assets/zurich4.png";
+
 const ImovelDetalhe = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -33,7 +45,8 @@ const ImovelDetalhe = () => {
               Imóvel não encontrado
             </h1>
             <p className="text-muted-foreground mb-6">
-              Não localizamos este empreendimento. Ele pode ter sido removido ou estar temporariamente indisponível.
+              Não localizamos este empreendimento. Ele pode ter sido removido ou
+              estar temporariamente indisponível.
             </p>
             <Button onClick={() => navigate("/imoveis")}>
               Ver todas as oportunidades
@@ -45,6 +58,8 @@ const ImovelDetalhe = () => {
   }
 
   const imovel = imovelSelecionado;
+  const isZurich = imovel.id === "residencial-zurich";
+  const imagensZurich = [zurich1, zurich2, zurich3, zurich4];
 
   return (
     <div className="min-h-screen bg-background pt-32 pb-24">
@@ -60,11 +75,32 @@ const ImovelDetalhe = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-gold/20 animate-fade-in">
-            <img
-              src={imovel.image}
-              alt={imovel.name}
-              className="w-full h-[420px] object-cover"
-            />
+            {isZurich ? (
+              <Carousel opts={{ loop: true }} className="w-full">
+                <CarouselContent>
+                  {imagensZurich.map((src, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative w-full h-[260px] sm:h-[340px] lg:h-[420px]">
+                        <img
+                          src={src}
+                          alt={`${imovel.name} imagem ${index + 1}`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {/* Setas só no desktop, no mobile fica no swipe */}
+                <CarouselPrevious className="hidden md:flex" />
+                <CarouselNext className="hidden md:flex" />
+              </Carousel>
+            ) : (
+              <img
+                src={imovel.image}
+                alt={imovel.name}
+                className="w-full h-[260px] sm:h-[340px] lg:h-[420px] object-cover"
+              />
+            )}
           </div>
 
           <div className="space-y-6 animate-slide-in">
@@ -119,7 +155,7 @@ const ImovelDetalhe = () => {
               {imovel.areaFrom && (
                 <Card className="p-4 bg-card/80 border-border">
                   <p className="text-xs uppercase tracking-wide text-muted-foreground mb-1">
-                    Área privativa
+                    Área privativa a partir de
                   </p>
                   <p className="text-xl font-semibold text-foreground">
                     {imovel.areaFrom} m²
@@ -128,8 +164,20 @@ const ImovelDetalhe = () => {
               )}
             </div>
 
-            <div className="pt-4 flex flex-col sm:flex-row gap-4">
-              <AgendarVisitaButton />
+            <Card className="p-6 bg-card/80 border-border">
+              <h2 className="text-xl font-semibold mb-2 text-foreground">
+                Diferenciais do empreendimento
+              </h2>
+              <ul className="space-y-1 text-muted-foreground text-sm">
+                <li>• Plantas amplas e inteligentes</li>
+                <li>• Localização privilegiada em Ouro Branco</li>
+                <li>• Acabamentos de alto padrão</li>
+                <li>• Áreas comuns completas para toda a família</li>
+              </ul>
+            </Card>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <AgendarVisitaButton imovelNome={imovel.name} />
               <Button
                 variant="outline"
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"

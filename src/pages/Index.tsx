@@ -213,15 +213,15 @@ const Index = () => {
               {[{
               icon: Phone,
               title: "Telefone",
-              info: "(31) 3456-7890"
+              info: "(31) 9206-8755"
             }, {
               icon: Mail,
               title: "E-mail",
-              info: "contato@lhm.com.br"
+              info: "lhmincorporadora@gmail.com"
             }, {
               icon: MapPin,
               title: "Endereço",
-              info: "Av. Afonso Pena, 100 - Belo Horizonte"
+              info: "Belo Horizonte - Minas Gerais"
             }].map((contact, index) => <div key={index} className="flex flex-col items-center animate-fade-in" style={{
               animationDelay: `${index * 0.1}s`
             }}>
@@ -241,11 +241,15 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border bg-card py-12">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-6 md:mb-0">
-              <img src={logoLhm} alt="LHM Incorporadora" className="h-10 w-auto" />
+          <div className="flex flex-col items-center text-center">
+            <div className="flex items-center mb-4">
+              <img
+                src={logoLhm}
+                alt="LHM Incorporadora"
+                className="h-10 w-auto"
+              />
             </div>
-            <div className="text-center md:text-right">
+            <div>
               <p className="text-muted-foreground mb-2">
                 © 2024 LHM Incorporadora. Todos os direitos reservados.
               </p>
@@ -256,6 +260,7 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
     </div>;
 };
 export default Index;
